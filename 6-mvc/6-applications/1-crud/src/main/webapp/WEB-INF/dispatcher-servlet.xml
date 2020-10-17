@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <import resource="classpath:named-parameter-jdbc-template-config.xml" />
+
+    <context:component-scan base-package="com.franktran.spring" />
+
+    <util:properties id="sql" location="classpath:sql.properties" />
+
+    <bean class="org.modelmapper.ModelMapper" />
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/views/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <bean class="com.franktran.spring.mapper.CustomerMapper" />
+</beans>
